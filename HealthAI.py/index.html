@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health AI</title>
+  </head>
+  <body>
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Health AI System</title>
+        <link
+          rel="stylesheet"
+          href="{{ url_for('static', filename='styles.css') }}"
+        />
+        <script>
+          async function handleForm(endpoint, formId, resultId) {
+            const form = document.getElementById(formId);
+            const data = new FormData(form);
+            const res = await fetch(endpoint, { method: "POST", body: data });
+            const json = await res.json();
+            document.getElementById(resultId).innerText = JSON.stringify(
+              json,
+              null,
+              2
+            );
+          }
+        </script>
+      </head>
+      <body>
+        <h1>Health AI System</h1>
+
+        <form
+          id="chatForm"
+          onsubmit="event.preventDefault(); handleForm('/chat', 'chatForm', 'chatResult')"
+        >
+          <label>Ask a Health Question:</label>
+          <input type="text" name="question" required />
+          <button>Ask</button>
+        </form>
+        <pre id="chatResult"></pre>
+
+        <form
+          id="predictForm"
+          onsubmit="event.preventDefault(); handleForm('/predict', 'predictForm', 'predictResult')"
+        >
+          <label>Enter Symptoms:</label>
+          <input type="text" name="symptoms" required />
+          <button>Predict</button>
+        </form>
+        <pre id="predictResult"></pre>
+
+        <form
+          id="treatmentForm"
+          onsubmit="event.preventDefault(); handleForm('/treatment', 'treatmentForm', 'treatmentResult')"
+        >
+          <label>Condition:</label>
+          <input type="text" name="condition" />
+          <label>Age:</label>
+          <input type="number" name="age" />
+          <button>Get Treatment</button>
+        </form>
+        <pre id="treatmentResult"></pre>
+
+        <a href="/dashboard">Go to Dashboard</a>
+      </body>
+    </html>
+  </body>
+</html>

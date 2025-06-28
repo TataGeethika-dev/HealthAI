@@ -1,0 +1,33 @@
+body {
+  font-family: sans-serif;
+  margin: 40px;
+  background: #eef5ff;
+}
+
+form {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 8px #ccc;
+}
+
+input {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px 15px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+
+pre {
+  background: #f0f0f0;
+  padding: 10px;
+  white-space: pre-wrap;
+}
